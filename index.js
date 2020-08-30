@@ -13,6 +13,8 @@ app.use(express.urlencoded()); // Parse URL-encoded bodies (as sent by HTML form
 app.use(express.json()); // Parse JSON bodies (as sent by API clients)
 app.use(cors()) 
 
+app.use(express.static('public'));
+
 app.get('/', (request, response) => {
 	response.set('Access-Control-Allow-Origin', '*')
 	console.log('server starting ...');
@@ -21,7 +23,9 @@ app.get('/', (request, response) => {
 
 app.get('/download', (request, response) => {
 	response.set('Access-Control-Allow-Origin', '*')
-	const file = `${__dirname}\files\example.docx`;
+	//const file = `${__dirname}/public/example.docx`;
+	const file = __dirname + '/public/example.docx';
+	//const file = '/public/example.docx'
 	console.log(file);
 	response.download(file);
 })
