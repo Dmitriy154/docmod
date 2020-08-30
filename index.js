@@ -1,5 +1,4 @@
 const express = require('express')
-const bodyParser = require("body-parser")
 const cors = require('cors')
 const fs = require('fs')
 const path = require('path')
@@ -8,22 +7,17 @@ const ChangeDoc = require('./modules/changedoc')
 const CreateDoc = require('./modules/createdoc')
 
 const app = express()
-
 const PORT = process.env.PORT || 3000
 
-// Parse URL-encoded bodies (as sent by HTML forms)
-app.use(express.urlencoded());
-
-// Parse JSON bodies (as sent by API clients)
-app.use(express.json());
-
-//parse application/json
-//app.use(bodyParser.json())
-
-//const jsonParser = express.json(); // создаем парсер для данных в формате json
-// создаем парсер для данных application/x-www-form-urlencoded  //const urlencodedParser = bodyParser.urlencoded({extended: false})
-
+app.use(express.urlencoded()); // Parse URL-encoded bodies (as sent by HTML forms)
+app.use(express.json()); // Parse JSON bodies (as sent by API clients)
 app.use(cors()) 
+
+app.get('/', (request, response) => {
+	response.set('Access-Control-Allow-Origin', '*')
+	console.log('server starting ...');
+	response.send('server starting ...');
+})
 
 app.get('/download', (request, response) => {
 	response.set('Access-Control-Allow-Origin', '*')
