@@ -27,7 +27,7 @@ app.get('/download', (request, response) => {
 	const file = __dirname + '/public/example.docx';
 	//const file = '/public/example.docx'
 	console.log(file);
-	response.download(file);
+	response.sendFile(file);
 })
 
 app.post("/", function (request, response) {
