@@ -21,9 +21,9 @@ app.get('/', (request, response) => {
 
 app.get('/download', (request, response) => {
 	response.set('Access-Control-Allow-Origin', '*')
-	const file = `${__dirname}/files/example.docx`;
+	const file = `${__dirname}\files\example.docx`;
+	console.log(file);
 	response.download(file);
-	console.log('запрос download');
 })
 
 app.post("/", function (request, response) {
@@ -38,7 +38,6 @@ app.post("/doc", function (request, response) {
 	console.log('create docx');
 	let docx = new CreateDoc(request.body);
 	console.log(docx);
-
 });
 
 app.post("/form", function (request, response) {

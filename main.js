@@ -1,9 +1,12 @@
+const url = 'https://docmod.herokuapp.com/'
+const url2 = 'http://localhost:3000'
+
 function postData() {
 	let myData = {a: 1, b: 2, c: "hello"};
 	let data = JSON.stringify(myData)	
-
+	
 //mode: 'no-cors',
-	fetch("http://localhost:3000", {
+	fetch(url, {
 		method: 'POST', 
 		body: data,	
 		headers: {"Content-Type": "application/json; charset=UTF-8"},
@@ -11,8 +14,6 @@ function postData() {
 	  .then(response => response.json())
 	  .then(json => console.log(json))
 }
-
-//.then(response => response.json())
 
 function createDocx() {
 	let myData = {a: 1, b: 2, c: "Dmitriy Afanasov"};
@@ -30,6 +31,7 @@ function createDocx() {
 
 function downloadDocx() {
 	//location.href = 'http://localhost:3000/download';
+	//fetch("https://docmod.herokuapp.com/download")
 	fetch("http://localhost:3000/download")
 }
 
