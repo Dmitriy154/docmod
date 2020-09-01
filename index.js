@@ -23,11 +23,13 @@ app.get('/', (request, response) => {
 
 app.get('/download', (request, response) => {
 	response.set('Access-Control-Allow-Origin', '*')
-	//const file = `${__dirname}/public/example.docx`;
-	const file = __dirname + '/public/example.docx';
-	//const file = '/public/example.docx'
+	/*const file = __dirname + '/public/example.docx'
 	console.log(file);
-	response.sendFile(file);
+	//response.sendFile(file);
+	response.download(file);
+	*/
+	const filepath = __dirname + '/public/about.html'
+	response.sendFile(filepath)
 })
 
 app.post("/", function (request, response) {

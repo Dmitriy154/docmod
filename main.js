@@ -9,7 +9,7 @@ function postData() {
 	fetch(url, {
 		method: 'POST', 
 		body: data,	
-		headers: {"Content-Type": "application/json; charset=UTF-8"},
+		headers: {"Content-Type": "application/json; charset=UTF-8"}
 	  })
 	  .then(response => response.json())
 	  .then(json => console.log(json))
@@ -32,6 +32,15 @@ function createDocx() {
 function downloadDocx() {
 	//location.href = 'http://localhost:3000/download';
 	//fetch("https://docmod.herokuapp.com/download")
-	fetch("http://localhost:3000/download")
+	
+	fetch("http://localhost:3000/download", {
+		method: 'GET'
+	})
+	
+	//.then(response => response.blob())
+	//.then(data => console.log(data))
 }
 
+function senddocument(){
+	
+}
